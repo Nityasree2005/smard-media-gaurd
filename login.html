@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body class="auth-body">
+
+    <div class="auth-header">
+        <h1>Smart Media Guard</h1>
+        <p>Welcome back!</p>
+    </div>
+
+    <div class="auth-card">
+        <h2>Login</h2>
+
+        <form method="POST">
+
+            <label>Email Address</label>
+            <div class="input-box">
+                <span>📧</span>
+                <input type="email" name="email" placeholder="you@example.com" required>
+            </div>
+
+            <label>Password</label>
+            <div class="input-box">
+                <span>🔒</span>
+                <input type="password" name="password" placeholder="Enter password" required>
+            </div>
+
+            <button type="submit" class="gradient-btn">Login →</button>
+
+        </form>
+
+
+        <p class="switch-link">
+            Don't have an account?
+            <a href="/register">Register here</a>
+        </p>
+
+    </div>
+
+</body>
+
+</html>

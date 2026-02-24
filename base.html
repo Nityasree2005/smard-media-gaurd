@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Smart Media Guard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- ========================= -->
+    <!-- NAVBAR -->
+    <!-- ========================= -->
+
+    <nav>
+        <h2>Smart Media Guard</h2>
+
+        <div>
+            {% if session.get('user_id') %}
+            <a href="/dashboard">Dashboard</a>
+            <a href="/history">History</a>
+            <a href="/analytics">Analytics</a>
+            <a href="/logout">Logout</a>
+            {% else %}
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- ========================= -->
+    <!-- FLASH MESSAGES -->
+    <!-- ========================= -->
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div style="text-align:center; margin-top:20px;">
+        {% for message in messages %}
+        <div style="
+                    background:#fee2e2;
+                    color:#b91c1c;
+                    padding:10px;
+                    width:50%;
+                    margin:10px auto;
+                    border-radius:10px;">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <!-- ========================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ========================= -->
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>

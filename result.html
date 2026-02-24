@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+    <!-- Approved Box -->
+    <div class="approved-box">
+        <h2>✔ Content Approved</h2>
+        <p>Your content appears safe for posting.</p>
+    </div>
+
+    <!-- Risk Report -->
+    <div class="report-card">
+
+        <h2>🛡 Risk Analysis Report</h2>
+
+        <div class="score-box">
+            <h3>Overall Safety Score</h3>
+            <div class="big-score">{{ score }}</div>
+            <p>out of 100</p>
+        </div>
+
+        <h3>Category-wise Risk Assessment</h3>
+
+        <div class="category-grid">
+            {% for category, value in categories.items() %}
+            <div class="category-card">
+                <h4>{{ category }}</h4>
+                <div class="category-score">{{ value }}</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: {{ value }}%"></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if filename %}
+        <div class="preview">
+            <h3>Uploaded File Preview</h3>
+
+            {% if filename.endswith(('png','jpg','jpeg')) %}
+            <img src="{{ url_for('uploaded_file', filename=filename) }}" width="400">
+            {% elif filename.endswith('mp4') %}
+            <video width="400" controls>
+                <source src="{{ url_for('uploaded_file', filename=filename) }}">
+            </video>
+            {% else %}
+            <a href="{{ url_for('uploaded_file', filename=filename) }}" target="_blank">
+                Download Document
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

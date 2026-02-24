@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Verify OTP</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="auth-body">
+
+    <div class="auth-header">
+        <h1>Email Verification</h1>
+        <p>Enter the OTP sent to your email</p>
+    </div>
+
+    <div class="auth-card">
+        <form method="POST">
+            <label>Enter OTP</label>
+            <div class="input-box">
+                <span>🔢</span>
+                <input type="text" name="otp" required>
+            </div>
+
+            <button type="submit" class="gradient-btn">Verify →</button>
+        </form>
+
+        <p class="switch-link">
+            Didn't receive OTP?
+            <a href="/resend_otp">Resend OTP</a>
+        </p>
+    </div>
+
+</body>
+
+</html>

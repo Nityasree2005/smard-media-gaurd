@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+    <!-- ================= HERO ================= -->
+    <div class="hero">
+        <h1>AI-Powered Pre-Publication Guardian</h1>
+        <p>
+            Upload your social media post and let advanced AI analyze it for
+            sensitive content, privacy risks, and safety concerns before sharing.
+        </p>
+    </div>
+
+    <!-- ================= UPLOAD CARD ================= -->
+    <div class="card">
+
+        <h2>Upload Your Post</h2>
+        <p>Add text and media for AI safety analysis</p>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            <label>Post Content</label>
+            <textarea id="contentBox" name="content"
+                placeholder="What's on your mind? Write your social media post here..." maxlength="5000"
+                oninput="updateCounter()" required></textarea>
+
+            <div class="char-row">
+                <span id="charCount">0 characters</span>
+                <span>Maximum 5000 characters</span>
+            </div>
+
+            <!-- Upload Box -->
+            <label>Attach File (Optional)</label>
+
+            <div class="upload-box" onclick="document.getElementById('fileInput').click();">
+
+                <div class="upload-icon">📷</div>
+                <p class="upload-text">Click to upload image</p>
+                <span class="upload-sub">PNG, JPG, MP4, DOCX up to 10MB</span>
+            </div>
+
+            <input type="file" id="fileInput" name="file" accept=".png,.jpg,.jpeg,.mp4,.docx" hidden>
+
+            <button type="submit" class="gradient-btn big-btn">
+                Analyze Post for Safety
+            </button>
+
+        </form>
+
+        <div class="info-box">
+            <strong>AI-Powered Protection:</strong>
+            Your post will be analyzed for privacy leaks, hate speech,
+            plagiarism, explicit content, violence, and sensitive topics.
+        </div>
+
+    </div>
+
+    <!-- ================= QUICK PRIVACY TESTS ================= -->
+    <div class="card">
+        <h2>🔎 Quick Privacy Tests</h2>
+
+        <div class="test-grid">
+
+            <div class="test-card blue">Phone Number Test</div>
+            <div class="test-card green">Address Test</div>
+            <div class="test-card orange">Phone + Address</div>
+            <div class="test-card purple">Multiple Phone Numbers</div>
+
+        </div>
+    </div>
+
+    <!-- ================= SENSITIVE CONTENT ================= -->
+    <div class="card warning-card">
+
+        <h2>⚠ Sensitive Content Examples</h2>
+
+        <div class="warning-text">
+            WARNING: These examples contain sensitive topics
+            for AI detection testing purposes only.
+        </div>
+
+        <div class="example-grid">
+
+            <div class="example">
+                <h3>Mental Health Crisis</h3>
+                <p>I can't take this anymore. I've been feeling depressed...</p>
+                <p class="detect">Will Detect: Self-harm, Suicide mention</p>
+            </div>
+
+            <div class="example">
+                <h3>Medical Information Leak</h3>
+                <p>Just got diagnosed with HIV yesterday...</p>
+                <p class="detect">Will Detect: Health Privacy</p>
+            </div>
+
+            <div class="example">
+                <h3>Domestic Violence</h3>
+                <p>My husband hit me again last night...</p>
+                <p class="detect">Will Detect: Abuse indicators</p>
+            </div>
+
+            <div class="example">
+                <h3>Identity Theft Risk</h3>
+                <p>My SSN is 123-45-6789...</p>
+                <p class="detect">Will Detect: SSN, DOB</p>
+            </div>
+
+            <div class="example">
+                <h3>Drug Addiction</h3>
+                <p>Been addicted to heroin for 3 years...</p>
+                <p class="detect">Will Detect: Substance abuse</p>
+            </div>
+
+            <div class="example">
+                <h3>Sexual Assault</h3>
+                <p>I was assaulted last weekend...</p>
+                <p class="detect">Will Detect: Assault mention</p>
+            </div>
+
+        </div>
+
+        <div class="help-box">
+            <strong>How Smart Media Guard Helps:</strong>
+            Our AI system detects personal information leaks,
+            emotional distress signals, abuse indicators,
+            and other sensitive content before posting.
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    function updateCounter() {
+        const text = document.getElementById("contentBox").value;
+        document.getElementById("charCount").innerText =
+            text.length + " characters";
+    }
+</script>
+
+{% endblock %}

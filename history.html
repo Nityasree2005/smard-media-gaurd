@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+    <!-- ================= HEADER ================= -->
+    <div class="hero">
+        <h1>Analysis History</h1>
+        <p>Review your past content safety analyses</p>
+    </div>
+
+    {% if posts and posts|length > 0 %}
+
+    <!-- ================= HISTORY GRID ================= -->
+    <div class="history-grid">
+
+        {% for post in posts %}
+        <div class="history-card">
+
+            <div class="history-header">
+                <span class="history-score">
+                    {{ post[2] }}%
+                </span>
+                <span class="history-date">
+                    {{ post[3] }}
+                </span>
+            </div>
+
+            <div class="history-content">
+                {{ post[0][:200] }}
+                {% if post[0]|length > 200 %}...{% endif %}
+            </div>
+
+            {% if post[1] %}
+            <div class="history-preview">
+
+                {% if post[1].endswith(('png','jpg','jpeg')) %}
+                <img src="{{ url_for('uploaded_file', filename=post[1]) }}" width="220">
+
+                {% elif post[1].endswith('mp4') %}
+                <video width="250" controls>
+                    <source src="{{ url_for('uploaded_file', filename=post[1]) }}">
+                </video>
+
+                {% else %}
+                <a href="{{ url_for('uploaded_file', filename=post[1]) }}" target="_blank">
+                    Download Document
+                </a>
+                {% endif %}
+
+            </div>
+            {% endif %}
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <!-- ================= EMPTY STATE ================= -->
+    <div class="empty-history">
+        <div class="empty-icon">📅</div>
+        <h2>No History Yet</h2>
+        <p>Start analyzing content to see your history here</p>
+        <a href="/dashboard" class="gradient-btn" style="width: 250px; margin: 20px auto;">
+            Go to Dashboard
+        </a>
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

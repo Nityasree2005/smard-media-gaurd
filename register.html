@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register - Smart Media Guard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body class="auth-body">
+
+    <div class="auth-header">
+        <h1>Smart Media Guard</h1>
+        <p>Create your account to get started</p>
+    </div>
+
+    <div class="auth-card">
+        <h2>Register</h2>
+
+        <form method="POST">
+
+            <label>Email Address</label>
+            <div class="input-box">
+                <span>📧</span>
+                <input type="email" name="email" placeholder="you@example.com" required>
+            </div>
+
+            <label>Username</label>
+            <div class="input-box">
+                <span>👤</span>
+                <input type="text" name="username" placeholder="johndoe" required>
+            </div>
+
+            <label>Password</label>
+            <div class="input-box">
+                <span>🔒</span>
+                <input type="password" name="password" required>
+            </div>
+
+            <label>Re-enter Password</label>
+            <div class="input-box">
+                <span>🔒</span>
+                <input type="password" name="confirm_password" required>
+            </div>
+
+            <button type="submit" class="gradient-btn">
+                Register →
+            </button>
+
+        </form>
+
+        <p class="switch-link">
+            Already have an account?
+            <a href="/login">Login</a>
+        </p>
+    </div>
+
+</body>
+
+</html>
